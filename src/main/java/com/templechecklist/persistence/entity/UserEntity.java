@@ -5,19 +5,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "travel")
-public class TravelEntity {
+@Table(name = "user")
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false, unique = true)
     private String uuid;
-    private Date date;
-    private Integer places;
-    private String temple;
+    private String user;
+    private String pass;
 }

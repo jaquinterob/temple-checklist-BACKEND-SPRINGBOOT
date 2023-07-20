@@ -16,5 +16,5 @@ public class DocumentTypeEntity {
     @Column(nullable = false, unique = true)
     private String uuid;
     private String name;
-
+    private String description;
 }
