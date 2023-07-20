@@ -42,4 +42,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
 
+    @PostMapping("/login")
+    ResponseEntity<Boolean> login(@RequestBody UserEntity userEntity) {
+        Boolean logged = userService.login(userEntity.getUser(), userEntity.getPass());
+        if (logged)
+            return ResponseEntity.ok(true);
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
+    }
+
 }

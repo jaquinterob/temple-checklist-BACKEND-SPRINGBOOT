@@ -17,4 +17,5 @@ public class UserEntity {
     private String uuid;
     private String user;
     private String pass;
+    private  Boolean active;
 }
