@@ -5,19 +5,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "traveler")
-public class TravelerEntity {
+public class TravelerEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false, unique = true)
     private String uuid;
     private String documentTypeId;
+    private String document;
     private String travelId;
     private String travelerTypeId;
     private String name;
@@ -25,6 +28,7 @@ public class TravelerEntity {
     private Integer age;
     private String cellPhone;
     private Date creationDate;
+    private Boolean leader;
 
     @ManyToOne
     @JoinColumn(name = "documentTypeId", referencedColumnName = "uuid", insertable = false, updatable = false)
@@ -32,12 +36,13 @@ public class TravelerEntity {
 
     @ManyToOne
     @JoinColumn(name = "travelId", referencedColumnName = "uuid", insertable = false, updatable = false)
-    private TravelEntity travelEntity;
+    private TravelEntity travel;
 
     @ManyToOne
     @JoinColumn(name = "travelerTypeId", referencedColumnName = "uuid", insertable = false, updatable = false)
-    private TravelerTypeEntity travelerTypeEntity;
+    private TravelerTypeEntity travelerType;
 
-
+    @OneToMany(mappedBy = "traveler")
+    private List<PaymentEntity> payments;
 
 }

@@ -1,5 +1,6 @@
 package com.templechecklist.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,13 +13,18 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "travel")
-public class TravelEntity implements Serializable {
+@Table(name = "payment")
+public class PaymentEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false, unique = true)
     private String uuid;
     private Date date;
-    private Integer places;
-    private String temple;
+    private Double amount;
+    private String travelerId;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "travelerId", referencedColumnName = "uuid", insertable = false, updatable = false)
+    private TravelerEntity traveler;
 }

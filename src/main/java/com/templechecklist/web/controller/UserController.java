@@ -47,7 +47,7 @@ public class UserController {
         Boolean logged = userService.login(userEntity.getUser(), userEntity.getPass());
         if (logged)
             return ResponseEntity.ok(true);
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
+        return ResponseEntity.ok(false);
     }
 
 }
