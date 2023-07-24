@@ -29,7 +29,7 @@ public class PaymentEntity implements Serializable {
     @JoinColumn(name = "travelerId", referencedColumnName = "uuid", insertable = false, updatable = false)
     private TravelerEntity traveler;
 
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn(name = "methodId", referencedColumnName = "uuid", insertable = false, updatable = false)
     private MethodEntity method;

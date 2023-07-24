@@ -42,7 +42,9 @@ public class TravelerEntity implements Serializable {
     @JoinColumn(name = "travelerTypeId", referencedColumnName = "uuid", insertable = false, updatable = false)
     private TravelerTypeEntity travelerType;
 
-    @OneToMany(mappedBy = "traveler")
+    @OneToMany(mappedBy = "traveler", orphanRemoval = true, cascade = {
+            CascadeType.ALL
+    }, fetch = FetchType.LAZY)
     private List<PaymentEntity> payments;
 
 }
