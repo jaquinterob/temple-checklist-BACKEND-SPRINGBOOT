@@ -22,9 +22,16 @@ public class PaymentEntity implements Serializable {
     private Date date;
     private Double amount;
     private String travelerId;
+    private String methodId;
 
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "travelerId", referencedColumnName = "uuid", insertable = false, updatable = false)
     private TravelerEntity traveler;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "methodId", referencedColumnName = "uuid", insertable = false, updatable = false)
+    private MethodEntity method;
+
 }
