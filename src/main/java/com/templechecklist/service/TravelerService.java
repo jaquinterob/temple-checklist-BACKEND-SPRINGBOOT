@@ -29,5 +29,13 @@ public class TravelerService {
         }
     }
 
+    public List<TravelerEntity> getTravelerWithSomePayment() {
+        return travelerRepository.getTravelerWithSomePayment();
+    }
+
+    public List<TravelerEntity> getTravelerWithOutPayment(){
+        return travelerRepository.getTravelerWithOutPayment();
+    }
+
 
 }
