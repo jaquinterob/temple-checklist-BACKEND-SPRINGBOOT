@@ -41,19 +41,4 @@ public class TravelerController {
             return ResponseEntity.ok().build();
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
-
-    @GetMapping("/filter/{filter}")
-    ResponseEntity<List<TravelerEntity>> getTravelerWithSomepayment(@PathVariable String filter) {
-        switch (filter) {
-            case "some-payment" -> {
-                return ResponseEntity.ok(travelerService.getTravelerWithSomePayment());
-            }
-            case "no-payments" -> {
-                return ResponseEntity.ok(travelerService.getTravelerWithOutPayment());
-            }
-            default -> {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-            }
-        }
-    }
 }

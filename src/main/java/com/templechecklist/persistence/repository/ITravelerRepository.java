@@ -8,9 +8,4 @@ import java.util.List;
 
 public interface ITravelerRepository extends JpaRepository<TravelerEntity, String> {
 
-    @Query(value = "select t.* from traveler t , payment p  where t.uuid = p.traveler_id", nativeQuery = true)
-    List<TravelerEntity> getTravelerWithSomePayment();
-
-    @Query(value = "select t.* from traveler t , payment p  where not(t.uuid = p.traveler_id);", nativeQuery = true)
-    List<TravelerEntity> getTravelerWithOutPayment();
 }

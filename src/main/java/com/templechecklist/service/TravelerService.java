@@ -28,14 +28,4 @@ public class TravelerService {
             return false;
         }
     }
-
-    public List<TravelerEntity> getTravelerWithSomePayment() {
-        return travelerRepository.getTravelerWithSomePayment();
-    }
-
-    public List<TravelerEntity> getTravelerWithOutPayment(){
-        return travelerRepository.getTravelerWithOutPayment();
-    }
-
-
 }
